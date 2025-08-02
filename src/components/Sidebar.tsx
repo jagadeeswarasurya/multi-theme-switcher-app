@@ -51,6 +51,7 @@ const Nav = styled.nav`
     display: flex;
     align-items: center;
     gap: 8px;
+    text-decoration: none;
 
     &.active {
       color: #00e676;
@@ -80,12 +81,10 @@ const Sidebar: React.FC = () => {
   const { theme } = useTheme();
   const [isOpen, setIsOpen] = useState(window.innerWidth >= 769);
 
-  // Hide sidebar if theme is not theme2
   if (theme !== 'theme2') return null;
 
   const toggleSidebar = () => setIsOpen((prev) => !prev);
 
-  // Optional: close sidebar on resize to desktop
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 769) setIsOpen(true);

@@ -1,3 +1,5 @@
+// src/components/Card.tsx
+
 import React from 'react';
 import styled from 'styled-components';
 import { ShoppingBag, Shirt, Monitor, Gem } from 'lucide-react';
@@ -16,7 +18,7 @@ const StyledCard = styled.div`
   background-color: ${({ theme }) =>
     theme.name === 'theme2'
       ? '#2b2b2b'
-      : theme.layout === 'card-grid'
+      : theme.name === 'theme3'
       ? '#fffbe6'
       : '#f5f5f5'};
 
@@ -100,9 +102,9 @@ const Badge = styled.div`
 `;
 
 const getCategoryIcon = (category: string) => {
-  if (category.includes('clothing')) return <Shirt size={16} style={{ marginRight: '6px' }} />;
-  if (category.includes('electronics')) return <Monitor size={16} style={{ marginRight: '6px' }} />;
-  if (category.includes('jewelery')) return <Gem size={16} style={{ marginRight: '6px' }} />;
+  if (category.toLowerCase().includes('clothing')) return <Shirt size={16} style={{ marginRight: '6px' }} />;
+  if (category.toLowerCase().includes('electronics')) return <Monitor size={16} style={{ marginRight: '6px' }} />;
+  if (category.toLowerCase().includes('jewelery')) return <Gem size={16} style={{ marginRight: '6px' }} />;
   return <ShoppingBag size={16} style={{ marginRight: '6px' }} />;
 };
 
