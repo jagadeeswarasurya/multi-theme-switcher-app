@@ -38,8 +38,24 @@ const DropdownButton = styled.button`
       : '0 2px 6px rgba(0, 0, 0, 0.05)'};
   transition: all 0.3s ease;
 
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
   &:hover {
     transform: scale(1.03);
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    border-radius: 8px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
   }
 `;
 
@@ -56,9 +72,12 @@ const DropdownMenu = styled.div`
   z-index: 999;
   animation: ${fadeIn} 0.2s ease-out;
   min-width: 160px;
+
+  @media (max-width: 768px) {
+    min-width: 140px;
+  }
 `;
 
-// ✅ Use $active instead of active to avoid React DOM warning
 const MenuItem = styled.div<{ $active: boolean }>`
   display: flex;
   align-items: center;
@@ -83,6 +102,18 @@ const MenuItem = styled.div<{ $active: boolean }>`
         : theme.name === 'theme2'
         ? '#f1f1f1'
         : '#333'};
+    width: 20px;
+    height: 20px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
   }
 `;
 
@@ -132,13 +163,13 @@ const ThemeDropdown: React.FC = () => {
       {open && (
         <DropdownMenu>
           <MenuItem onClick={() => handleSelect('theme1')} $active={theme === 'theme1'}>
-            <Sun /> 
+            <Sun /> Theme 1
           </MenuItem>
           <MenuItem onClick={() => handleSelect('theme2')} $active={theme === 'theme2'}>
-            <Moon /> 
+            <Moon /> Theme 2
           </MenuItem>
           <MenuItem onClick={() => handleSelect('theme3')} $active={theme === 'theme3'}>
-            <Rainbow />
+            <Rainbow /> Theme 3
           </MenuItem>
         </DropdownMenu>
       )}
